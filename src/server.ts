@@ -1,15 +1,25 @@
+import {Server} from "http"
+import mongoose from "mongoose"
 import app from "./app"
+import { envVars } from "./app/config/env"
 
 
-const port = 3000
+let server : Server
 
 
 const startServer = async()=>{
+try {
+    await mongoose.connect(envVars.DB_URL)
+    console.log("Connected to DB!!")
 
-    
-app.listen(port,()=>{
-    console.log(`server is ranning http://localhost:${port}`)
+
+
+  server =  app.listen(envVars.PORT,()=>{
+    console.log(`server is ranning http://localhost:${envVars.PORT}`)
 })
+} catch (error) {
+    
+}
 }
 
 

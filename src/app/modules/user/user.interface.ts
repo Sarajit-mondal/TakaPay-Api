@@ -7,7 +7,7 @@ export enum Role {
     USER = "USER"
 }
 
-export enum isActive {
+export enum UserIsActive {
     ACTIVE = "ACTIVE",
     INACTIVE = "INACTIVE",
     BLOCKED = "BLOCKED"
@@ -18,12 +18,12 @@ export interface IUser extends Document {
     phone:string;
     password:string;
     role : string;
-    isVerified: isActive;
+    isVerified: Boolean;
     nidNumber?:string;
     photoUrl?:string;
     wallet : number;
     location?:string;
     commissionRate?:number;
-    isActive:Boolean;
+    isActive?:UserIsActive;
     
 }

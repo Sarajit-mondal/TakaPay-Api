@@ -12,7 +12,7 @@ app.use(express.json())
 
 app.get('/',(req:Request,res:Response)=>{
  res.status(200).json({
-    message: "Welcom to tour management System backand"
+    message: "Welcom to TakaPay management System backand"
   })
 })
 export default app

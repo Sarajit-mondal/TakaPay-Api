@@ -17,11 +17,11 @@ export interface IUser extends Document {
     name : string;
     phone:string;
     password:string;
-    role : string;
-    isVerified: Boolean;
-    nidNumber?:string;
+    nidNumber:string;
+    role: Role;
+    isVerified?: Boolean;
     photoUrl?:string;
-    wallet : number;
+    wallet?: number;
     location?:string;
     commissionRate?:number;
     isActive?:UserIsActive;

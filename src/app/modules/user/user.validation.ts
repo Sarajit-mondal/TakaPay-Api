@@ -15,6 +15,6 @@ export const userZodSchema = z.object({
 
   nidNumber: z.string()
              .min(10, { message: 'NID must be at least 10 digits' })
-            .max(16, { message: 'NID must be at most 16 digits' }),
+             .max(16, { message: 'NID must be at most 16 digits' }),
 
 })

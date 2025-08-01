@@ -13,7 +13,9 @@ export const handlerValidationError = (err: mongoose.Error.ValidationError): TGe
     errors.forEach((errorObject: any) => errorSources.push({
         path: errorObject.path,
         message: errorObject.message
+      
     }))
+console.log(errorSources)
 
     return {
         statusCode: 400,

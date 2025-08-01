@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { IUser, Role, UserIsActive } from "./user.interface";
+import { agentStatus, IUser, Role, UserIsActive } from "./user.interface";
 
 
 
@@ -20,10 +20,14 @@ const userSchema = new Schema<IUser>({
     location: {type:String},
     commissionRate:{type:String},
     isActive:{
-        type:Boolean,
+        type:String,
         enum: Object.values(UserIsActive),
-        default:true
+        default: UserIsActive.UNBLOCKED
     },
+    status : {
+        type:String,
+        enum : Object.values(agentStatus),
+    }
 },{
     timestamps:true,
     versionKey:false

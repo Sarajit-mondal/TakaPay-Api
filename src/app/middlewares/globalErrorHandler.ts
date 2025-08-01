@@ -37,14 +37,14 @@ if (envVars.NODE_ENV === "development") {
         const simplifiedError = handlerZodError(err)
         statusCode = simplifiedError.statusCode
         errorSources = simplifiedError.errorSources as TErrorSources[]
-        message = errorSources.length > 0 && errorSources[0].message ? errorSources[0].message : "Validation error"
+        message = errorSources.length > 0 && errorSources[0].message ? errorSources[0].message : "Zod error"
     }
     //Mongoose Validation Error
     else if (err.name === "ValidationError") {
         const simplifiedError = handlerValidationError(err)
         statusCode = simplifiedError.statusCode;
         errorSources = simplifiedError.errorSources as TErrorSources[]
-        message = simplifiedError.message
+        message = errorSources.length > 0 && errorSources[0].message ? errorSources[0].message : message
     }
     else if (err instanceof AppError) {
         statusCode = err.statusCode

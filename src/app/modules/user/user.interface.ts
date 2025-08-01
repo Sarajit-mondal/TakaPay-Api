@@ -8,9 +8,12 @@ export enum Role {
 }
 
 export enum UserIsActive {
-    ACTIVE = "ACTIVE",
-    INACTIVE = "INACTIVE",
-    BLOCKED = "BLOCKED"
+    BLOCKED = "BLOCKED",
+    UNBLOCKED = "UNBLOCKED"
+}
+export enum agentStatus {
+ APPROVE = "APPROVE",
+ SUSPEND = "SUSPEND"
 }
 
 export interface IUser extends Document {
@@ -19,11 +22,11 @@ export interface IUser extends Document {
     password:string;
     nidNumber:number;
     role: Role;
-    isVerified?: Boolean;
     photoUrl?:string;
     wallet?: number;
     location?:string;
     commissionRate?:number;
+    isVerified?: Boolean;
     isActive?:UserIsActive;
-    
+    status? : agentStatus;
 }

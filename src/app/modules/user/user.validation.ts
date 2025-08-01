@@ -1,5 +1,6 @@
 
 import {z} from 'zod'
+import { agentStatus, Role, UserIsActive } from './user.interface'
 
 export const userZodSchema = z.object({
  name : z.
@@ -15,9 +16,20 @@ export const userZodSchema = z.object({
     .string()
     .regex(/^\d{5}$/, { message: "Password must be exactly 5 digits" }),
 
-  nidNumber: z.number()
+  nidNumber: z.string()
              
              .min(10, { message: 'NID must be at least 10 digits' })
              .max(16, { message: 'NID must be at most 16 digits' }),
+  role: z.enum([Role.USER, Role.AGENT, Role.ADMIN]).optional(),
+  isVerified: z.boolean().optional(),
+  photoUrl: z.string().optional(),
+  wallet: z.number().optional(),
+  location: z.string().optional(),
+  commissionRate: z.string().optional(),
+  isActive: z.enum([UserIsActive.BLOCKED, UserIsActive.UNBLOCKED]).optional(),
+  status: z.enum([agentStatus.APPROVE, agentStatus.SUSPEND]).optional()
 
 })
+
+
+export const UpdateUserZodSchema = userZodSchema.partial()

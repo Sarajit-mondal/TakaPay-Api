@@ -6,20 +6,23 @@ import bcryptjs from "bcryptjs";
 import { envVars } from "../../config/env";
 
 const createUser =async(payload : Partial<IUser>)=>{
-  const {phone,password,...rest} = payload;
+  const {phone,password:pass,...rest} = payload;
   const isExist = await User.findOne({phone:phone})
   if(isExist){
     throw new AppError(httpStatus.BAD_REQUEST,"User Alredy Exist ")
   }
-  const hashedPassword = await bcryptjs.hash(password as string,Number(envVars.BCRYPT_SALT_ROUND))
-  
+  const hashedPassword = await bcryptjs.hash(String(pass),Number(envVars.BCRYPT_SALT_ROUND))
+  console.log(hashedPassword)
   const user = await User.create({
     phone,
     password : hashedPassword,
     ...rest
   })
 
-  return user;
+  //send user data without password
+  const {password,...userWithOutPassword} = user.toObject()
+
+  return {userWithOutPassword};
 }
 
 

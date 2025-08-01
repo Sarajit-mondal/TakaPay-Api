@@ -8,7 +8,7 @@ const userSchema = new Schema<IUser>({
     name : {type:String,required:true},
     phone : {type:String,required:true,unique:true},
     password: {type:String,required:true},
-    nidNumber:{type:String,required:true},
+    nidNumber:{type:Number,required:true},
     role:{
         type:String,
         enum: Object.values(Role),

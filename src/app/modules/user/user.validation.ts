@@ -11,9 +11,12 @@ export const userZodSchema = z.object({
         .regex(/^(?:\+8801\d{9}|01\d{9})$/, {
             message: "Phone number must be valid for Bangladesh. Format: +8801XXXXXXXXX or 01XXXXXXXXX",
         }),
-  password: z.string().length(5,{message:"Must be exactly 5 characters long" }),
+  password: z
+    .string()
+    .regex(/^\d{5}$/, { message: "Password must be exactly 5 digits" }),
 
-  nidNumber: z.string()
+  nidNumber: z.number()
+             
              .min(10, { message: 'NID must be at least 10 digits' })
              .max(16, { message: 'NID must be at most 16 digits' }),
 

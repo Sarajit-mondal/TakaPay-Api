@@ -16,7 +16,10 @@ const userSchema = new Schema<IUser>({
     },
     isVerified:{type:Boolean,default:false},
     photoUrl:{type:String},
-    wallet : {type:Number,default:50},
+     wallet: {
+      type: Schema.Types.ObjectId,
+      ref: "Wallet",
+    },
     location: {type:String},
     commissionRate:{type:String},
     isActive:{

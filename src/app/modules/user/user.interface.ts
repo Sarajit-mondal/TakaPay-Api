@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document, Types } from "mongoose";
 
 
 export enum Role {
@@ -23,7 +23,7 @@ export interface IUser extends Document {
     nidNumber:number;
     role: Role;
     photoUrl?:string;
-    wallet?: number;
+    wallet?: Types.ObjectId,
     location?:string;
     commissionRate?:number;
     isVerified?: Boolean;

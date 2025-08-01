@@ -4,6 +4,7 @@ import { User } from "./user.model";
 import httpStatus from "http-status-codes";
 import bcryptjs from "bcryptjs";
 import { envVars } from "../../config/env";
+import { Wallet } from "../wallet/wallet.model";
 
 const createUser =async(payload : Partial<IUser>)=>{
   const {phone,password:pass,...rest} = payload;
@@ -18,6 +19,16 @@ const createUser =async(payload : Partial<IUser>)=>{
     password : hashedPassword,
     ...rest
   })
+
+  // create wallet and set uer id
+  const wallet = await Wallet.create({
+    userId : user._id,
+
+  })
+
+  // set user wallet id 
+  user.wallet = wallet._id
+  await user.save()
 
   //send user data without password
   const {password,...userWithOutPassword} = user.toObject()

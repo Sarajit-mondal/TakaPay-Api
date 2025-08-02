@@ -20,7 +20,7 @@ export interface IUser extends Document {
     name : string;
     phone:string;
     password:string;
-    nidNumber:number;
+    nidNumber:string;
     role: Role;
     photoUrl?:string;
     wallet?: Types.ObjectId,

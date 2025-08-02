@@ -70,7 +70,7 @@ https://taka-pay-api.vercel.app/api/v1/user/create
   "name": "jit mandal", //required  all 
   "phone": "01700000000", //must bangldesh format +88 or 01
   "password": "12345",  // mush 5 digits
-  "nidNumber": 1234567890 /// must 10 digits  not up 17
+  "nidNumber": "1234567890" /// must 10 digits  not up 16
 }
 ```
 

@@ -15,9 +15,9 @@ export const userZodSchema = z.object({
     .string()
     .regex(/^\d{5}$/, { message: "Password must be exactly 5 digits" }),
 
-  nidNumber: z.number()
-             
-             .min(10, { message: 'NID must be at least 10 digits' })
-             .max(16, { message: 'NID must be at most 16 digits' }),
+  nidNumber: z
+  .string()
+  .regex(/^\d{10,16}$/, { message: "NID must be between 10 and 16 digits" })
+
 
 })

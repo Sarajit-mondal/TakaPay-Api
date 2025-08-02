@@ -96,6 +96,12 @@ https://taka-pay-api.vercel.app/api/v1/auth/login
 ```
 
 ### Wallet
+- `GET /api/v1/wallet/:userId` – Get one user wallet
+#### API-URL
+### only can see admin
+```
+https://taka-pay-api.vercel.app/api/v1/wallet/:userId
+```
 - `GET /api/v1/wallet` – Get  all user wallet
 #### API-URL
 ### only can see admin
@@ -104,7 +110,7 @@ https://taka-pay-api.vercel.app/api/v1/wallet
 ```
 
 
-- `POST /api/v1/wallet/add-money` – Top-up wallet
+- `PATCH /api/v1/wallet/add-money` – Top-up wallet
 #### API-URL
 ### Only can add user
 ```
@@ -118,7 +124,7 @@ https://taka-pay-api.vercel.app/api/v1/wallet/add-money
 }
 ```
 
-- `POST /api/v1/wallet/withdraw` – Withdraw money from wallet
+- `PATCH /api/v1/wallet/withdraw` – Withdraw money from wallet
 
 #### API-URL
 ### Only user can withdraw. only with agent
@@ -134,7 +140,7 @@ https://taka-pay-api.vercel.app/api/v1/wallet/withdraw
 }
 ```
 
-- `POST /api/v1/wallet/send-money` – Send money to another user
+- `PATCH /api/v1/wallet/send-money` – Send money to another user
 
 #### API-URL
 ### agent can send money only with user. But user can send money only with user
@@ -161,7 +167,7 @@ https://taka-pay-api.vercel.app/api/v1/transactions
 #### API-URL
 ### only can admin update 
 ```
-https://taka-pay-api.vercel.app/api/v1/admin/user-bolck/:id
+https://taka-pay-api.vercel.app/api/v1/admin/user-block/:id
 ```
 
 ```json
@@ -172,7 +178,7 @@ https://taka-pay-api.vercel.app/api/v1/admin/user-bolck/:id
 ```
 
 
-- `PATCH /api/v1/admin/agent/:id`
+- `PATCH /api/v1/admin/agent-suspend/:id`
 #### API-URL
 ### only can admin update 
 ```

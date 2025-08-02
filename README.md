@@ -84,14 +84,14 @@ https://taka-pay-api.vercel.app/api/v1/auth/login
 ```json
 {
   "phone": "01700000000", //must bangldesh format +88 or 01
-   "password": "12345",  // mush 5 digits
+   "password": "12345"  // mush 5 digits
 }
 ```
 #### admin login
 ```json
 {
   "phone": "01990925968", //must bangldesh format +88 or 01
-   "password": "12345",  // mush 5 digits
+   "password": "12345"  // mush 5 digits
 }
 ```
 
@@ -136,7 +136,7 @@ https://taka-pay-api.vercel.app/api/v1/wallet/withdraw
 {
    "fromUserId": "_id here agent", // sender userId like won Id
    "toUserId": "_id here user", // reciver userId like agent Id
-   "amount": 100, //must 50 or up
+   "amount": 100 //must 50 or up
 }
 ```
 
@@ -152,7 +152,7 @@ https://taka-pay-api.vercel.app/api/v1/wallet/send-money
 {
    "fromUserId": "_id here agent", // sender userId like won Id
    "toUserId": "_id here user", // reciver userId like agent Id
-   "amount": 100, //must 50 or up
+   "amount": 100 //must 50 or up
 }
 ```
 ### Admin

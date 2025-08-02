@@ -53,6 +53,11 @@ npm run dev
 
 ## 📮 API Endpoints
 
+### API BASE URL 
+```
+https://taka-pay-api.vercel.app
+```
+
 ### Auth
 
 - `POST /api/v1/user/create` – Register a new user

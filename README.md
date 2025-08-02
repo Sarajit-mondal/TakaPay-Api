@@ -61,57 +61,130 @@ https://taka-pay-api.vercel.app
 ### Auth
 
 - `POST /api/v1/user/create` – Register a new user
+#### API-URL
+```
+https://taka-pay-api.vercel.app/api/v1/user/create
+```
 ```json
 {
-  "name": "John Doe",
-  "phone": "01700000000",
-  "password": "123456",
-  "nidNumber": 1234567890
+  "name": "jit mandal", //required  all 
+  "phone": "01700000000", //must bangldesh format +88 or 01
+  "password": "12345",  // mush 5 digits
+  "nidNumber": 1234567890 /// must 10 digits  not up 17
 }
 ```
 
 - `POST /api/v1/auth/login` – Login user
+#### API-URL
+```
+https://taka-pay-api.vercel.app/api/v1/auth/login
+```
+
+#### user login
 ```json
 {
-  "phone": "01700000000",
-  "password": "123456"
+  "phone": "01700000000", //must bangldesh format +88 or 01
+   "password": "12345",  // mush 5 digits
+}
+```
+#### admin login
+```json
+{
+  "phone": "01990925968", //must bangldesh format +88 or 01
+   "password": "12345",  // mush 5 digits
 }
 ```
 
 ### Wallet
+- `GET /api/v1/wallet` – Get  all user wallet
+#### API-URL
+### only can see admin
+```
+https://taka-pay-api.vercel.app/api/v1/wallet
+```
 
-- `GET /api/v1/wallet/:userId` – Get wallet by user ID
-- `PATCH /api/v1/wallet/add-money` – Top-up wallet
+
+- `POST /api/v1/wallet/add-money` – Top-up wallet
+#### API-URL
+### Only can add user
+```
+https://taka-pay-api.vercel.app/api/v1/wallet/add-money
+```
 ```json
 {
-  "toUserId": "userId_here",
-  "amount": 100
+   "toUserId": "_id here", // reciver userId like won Id
+   "amount": 100, //must 50 or up
+   "method": "BANK" // "BANK" | "CARD"
 }
 ```
 
-- `PATCH /api/v1/wallet/withdraw` – Withdraw money from wallet
+- `POST /api/v1/wallet/withdraw` – Withdraw money from wallet
+
+#### API-URL
+### Only user can withdraw. only with agent
+```
+https://taka-pay-api.vercel.app/api/v1/wallet/withdraw
+```
+```json
 ```json
 {
-  "fromUserId": "userId_here",
-  "amount": 50
+   "fromUserId": "_id here agent", // sender userId like won Id
+   "toUserId": "_id here user", // reciver userId like agent Id
+   "amount": 100, //must 50 or up
 }
 ```
 
-- `PATCH /api/v1/wallet/send-money` – Send money to another user
-```json
-{
-  "fromUserId": "sender_id",
-  "toUserId": "receiver_id",
-  "amount": 50
-}
+- `POST /api/v1/wallet/send-money` – Send money to another user
+
+#### API-URL
+### agent can send money only with user. But user can send money only with user
+```
+https://taka-pay-api.vercel.app/api/v1/wallet/send-money
 ```
 
-- `GET /api/v1/wallet/transactions/:userId` – Get transaction history
-
+```json
+{
+   "fromUserId": "_id here agent", // sender userId like won Id
+   "toUserId": "_id here user", // reciver userId like agent Id
+   "amount": 100, //must 50 or up
+}
+```
 ### Admin
+- `GET /api/v1/wallet/transactions` – Get all transaction history 
+#### API-URL
+### only can admin
+```
+https://taka-pay-api.vercel.app/api/v1/transactions
+```
 
-- `PATCH /api/v1/admin/approve-agent/:id`
-- `PATCH /api/v1/admin/suspend-agent/:id`
+- `PATCH /api/v1/admin/user-block/:id`
+#### API-URL
+### only can admin update 
+```
+https://taka-pay-api.vercel.app/api/v1/admin/user-bolck/:id
+```
+
+```json
+{
+  "isActive": "BLOCKED"      //"BLOCKED" or "UNBLOCKED"
+}
+
+```
+
+
+- `PATCH /api/v1/admin/agent/:id`
+#### API-URL
+### only can admin update 
+```
+https://taka-pay-api.vercel.app/api/v1/admin/agent-suspend/:id
+```
+
+```json
+{
+  "status": "SUSPEND"        //"APPROVE" or "SUSPEND"
+}
+
+```
 
 ## 📫 Testing
 

@@ -30,7 +30,22 @@ if (wallet) {
 }
 
 
+const withdrawMoney = async (payload:Partial<ITransaction>) => {
+  
+};
+const sendMoney = async (payload:Partial<ITransaction>) => {
+  
+};
+const transactionsHistory = async () => {
+  
+};
+
+
+
 
 export const transactionService ={
   addMoney,
+  withdrawMoney,
+  sendMoney,
+  transactionsHistory
 }

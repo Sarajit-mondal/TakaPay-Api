@@ -18,11 +18,47 @@ const addMoney = catchAsync(async(req:Request,res:Response)=>{
    })
      
 })
+const withdrawMoney = catchAsync(async(req:Request,res:Response)=>{
+   const trx =await transactionService.withdrawMoney(req.body)
+
+   sendResponse(res,{
+    success : true,
+    statusCode: httpStatus.CREATED,
+    message: "Money Withdraw Successfully",
+    data : trx
+   })
+     
+})
+const sendMoney = catchAsync(async(req:Request,res:Response)=>{
+   const trx =await transactionService.sendMoney(req.body)
+
+   sendResponse(res,{
+    success : true,
+    statusCode: httpStatus.CREATED,
+    message: "Send Money Successfully",
+    data : trx
+   })
+     
+})
+const transactionsHistory = catchAsync(async(req:Request,res:Response)=>{
+   const alltransactions =await transactionService.transactionsHistory()
+
+   sendResponse(res,{
+    success : true,
+    statusCode: httpStatus.CREATED,
+    message: "All Transactions Successfully",
+    data : alltransactions
+   })
+     
+})
 
 
 
 
 
 export const TransactionContoler = {
-    addMoney
+addMoney,
+  withdrawMoney,
+  sendMoney,
+  transactionsHistory
 }

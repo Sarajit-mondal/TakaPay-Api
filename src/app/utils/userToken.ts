@@ -13,8 +13,8 @@ import { User } from "../modules/user/user.model";
 export const createUserTokens = (user:Partial<IUser>)=>{
 const jwtPayload = {
     userId : user._id,
-    email : user.phone,
-    role: user.role
+     phone : user.phone,
+     role: user.role
 }
 
 
@@ -37,7 +37,7 @@ export const createNewAccessTokenWithRefreshToken = async (refreshToken: string)
     if (!isUserExist) {
         throw new AppError(httpstatus.BAD_REQUEST, "User does not exist")
     }
-    if (isUserExist.isActive === UserIsActive.BLOCKED || isUserExist.isActive === UserIsActive.INACTIVE) {
+    if (isUserExist.isActive === UserIsActive.BLOCKED) {
         throw new AppError(httpstatus.BAD_REQUEST, `User is ${isUserExist.isActive}`)
     }
     

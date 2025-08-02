@@ -14,6 +14,10 @@ const moduleRoutes = [
         route: transactionRoute
     },
     {
+        path:"/wallet",
+        route: transactionRoute
+    },
+    {
         path:"/auth",
         route: AuthRoutes
     }

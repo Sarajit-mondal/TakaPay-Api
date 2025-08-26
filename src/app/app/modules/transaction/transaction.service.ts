@@ -41,11 +41,18 @@ const transactionsHistory = async () => {
 };
 
 
+const getAllTransactionsHistory = async () => {
+  const transactions = await Transaction.find()
+  .populate("fromUserId","name phone nidNumber role")
+  .populate("toUserId","name phone nidNumber role");
 
+  return transactions
+};
 
 export const transactionService ={
   addMoney,
   withdrawMoney,
   sendMoney,
-  transactionsHistory
+  transactionsHistory,
+  getAllTransactionsHistory
 }

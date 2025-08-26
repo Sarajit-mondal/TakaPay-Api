@@ -40,25 +40,37 @@ const sendMoney = catchAsync(async(req:Request,res:Response)=>{
    })
      
 })
-const transactionsHistory = catchAsync(async(req:Request,res:Response)=>{
-   const alltransactions =await transactionService.transactionsHistory()
+const getAllWallets = catchAsync(async(req:Request,res:Response)=>{
+   const wallets =await transactionService.getAllWallets()
 
    sendResponse(res,{
     success : true,
     statusCode: httpStatus.CREATED,
-    message: "All Transactions Successfully",
-    data : alltransactions
+    message: "All Wallets get Successfully",
+    data : wallets
+   })
+     
+})
+const getOneWallet = catchAsync(async(req:Request,res:Response)=>{
+   const {userId} = req.params
+   const wallet =await transactionService.getOneWallet(userId)
+
+   sendResponse(res,{
+    success : true,
+    statusCode: httpStatus.CREATED,
+    message: "One Wallet get Successfully",
+    data : wallet
    })
      
 })
 
 
 
-
-
-export const TransactionContoler = {
+export const WalletContoler = {
 addMoney,
   withdrawMoney,
   sendMoney,
-  transactionsHistory
+  getAllWallets,
+  getOneWallet
+  
 }

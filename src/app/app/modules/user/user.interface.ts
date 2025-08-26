@@ -20,10 +20,10 @@ export interface IUser extends Document {
     name : string;
     phone:string;
     password:string;
-    nidNumber:string;
-    role: Role;
+    nidNumber:String;
+    role?: Role;
     photoUrl?:string;
-    wallet?: Types.ObjectId,
+    wallet: Types.ObjectId,
     location?:string;
     commissionRate?:number;
     isVerified?: Boolean;

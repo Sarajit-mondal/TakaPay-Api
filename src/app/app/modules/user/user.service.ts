@@ -1,5 +1,5 @@
 import AppError from "../../errorHelpers/AppEror";
-import { IUser } from "./user.interface"
+import { IUser, Role } from "./user.interface"
 import { User } from "./user.model";
 import httpStatus from "http-status-codes";
 import bcryptjs from "bcryptjs";
@@ -35,7 +35,6 @@ const createUser =async(payload : Partial<IUser>)=>{
 
   return {userWithOutPassword};
 }
-
 
 
 

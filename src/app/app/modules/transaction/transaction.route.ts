@@ -4,6 +4,7 @@ import { TopUPTransactionSchema, transactionSchema } from "./transaction.validat
 
 import { checkAuth } from "../../middlewares/checkAuth";
 import { Role } from "../user/user.interface";
+import { TransactionContoler } from "./transaction.controller";
 
 
 
@@ -11,7 +12,7 @@ const route = Router()
 
 
 
-route.get("/history",
+route.get("/", checkAuth(Role.ADMIN),TransactionContoler.getAllTransactionsHistory,
 )
 
 

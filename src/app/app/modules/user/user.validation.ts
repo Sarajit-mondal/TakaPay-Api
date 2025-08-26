@@ -1,5 +1,6 @@
 
 import {z} from 'zod'
+import { agentStatus, Role, UserIsActive } from './user.interface'
 
 export const userZodSchema = z.object({
  name : z.
@@ -15,9 +16,13 @@ export const userZodSchema = z.object({
     .string()
     .regex(/^\d{5}$/, { message: "Password must be exactly 5 digits" }),
 
-  nidNumber: z
+nidNumber: z
   .string()
   .regex(/^\d{10,16}$/, { message: "NID must be between 10 and 16 digits" })
 
 
+})
+export const userUpdateZodSchema = z.object({
+ status: z.nativeEnum(agentStatus).optional(), 
+ isActive: z.nativeEnum(UserIsActive).optional(),
 })

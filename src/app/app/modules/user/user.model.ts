@@ -8,10 +8,11 @@ const userSchema = new Schema<IUser>({
     name : {type:String,required:true},
     phone : {type:String,required:true,unique:true},
     password: {type:String,required:true},
-    nidNumber:{type:String,required:true},
+    nidNumber:{type:String,required:true,unique:true},
     role:{
         type:String,
         enum: Object.values(Role),
+        required:true,
         default:Role.USER
     },
     isVerified:{type:Boolean,default:false},
